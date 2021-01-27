@@ -1,0 +1,40 @@
+body{
+    padding: 100px;
+}
+
+.submit-area{
+    border-radius: 10px;
+    margin-top: 50px;
+    padding: 40px;
+    box-shadow: 5px 5px 9px gray;
+}
+#transaction-area{
+    display: none;
+}
+.status{
+    margin:0 20px;
+    color:white;
+    padding:20px;
+    border-radius: 10px;
+}
+.deposit{
+    background-color: fuchsia;
+}
+.withdrow{
+    background-color: rgb(20, 37, 3);
+}
+.balence{
+    background-color: orange;
+}
+.transfer-area{
+    margin-top: 100px;
+}
+.count{
+    margin-right: 20px;
+    padding: 20px 50px;
+    box-shadow: 5px 5px 10px gray;
+}
+
+
+
+

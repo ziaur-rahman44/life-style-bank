@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Life styl bank</title>
+</head>
+<body>
+    <div id="login-area">
+        <h1 class="text-center">Welcome To Our Life Style Bank</h1>
+        <div class="submit-area">
+            <h4>LOG IN YOUR ACCOUNT</h4>
+            <input type="text" placeholder="Enter your email address" class="form-control">
+            <br>
+            <input type="password" placeholder="password" class="form-control">
+            <br>
+            <button id="login" class="btn btn-success">LOG IN</button>
+        </div>
+    </div>
+
+    <div id="transaction-area">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="status deposit">
+                    <h5>Deposit</h5>
+                    <h2>$<span id="currentDeposit">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="status withdrow">
+                    <h5>Withdraw</h5>
+                    <h2>$<span id="withdrawBalance">00</span> </h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="status balence">
+                    <h5>Balance</h5>
+                    <h2>$ <span id="depositBalance">1200</span> </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="transfer-area">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="count">
+                        <h4>Deposit</h4>
+                        <input id="Amount" type="text" class="form-control" placeholder="$ amount you to deposite">
+                        <br>
+                        <button id="depositBtn" class="btn btn-success">Deposite</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="count">
+                        <h4>Withdraw</h4>
+                        <input id="withdrawAmount" type="text" class="form-control"placeholder="$ you want to withdrow">
+                        <br>
+                        <button id="withdrawBtn" class="btn btn-success">Withdraw</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+
+        const addButton = document.getElementById("login");
+        addButton.addEventListener('click', function(){
+            const hideArea = document.getElementById("login-area");
+            hideArea.style.display = "none";
+            const showArea = document.getElementById("transaction-area");
+            showArea.style.display = "block";
+        })
+
+
+        function updateSpan(id, amount){
+            const getAmount = document.getElementById(id).innerText;
+            const amountNum = parseFloat(getAmount);
+            const totalAmount = amountNum + amount;
+            document.getElementById(id).innerText = totalAmount;
+        }
+            
+        const addBtn = document.getElementById("depositBtn");
+        addBtn.addEventListener('click',function(){
+           const amountNumber = valueSet("Amount");
+
+            updateSpan("currentDeposit", amountNumber);
+            updateSpan("depositBalance", amountNumber);
+            document.getElementById("Amount").value = "";
+        })
+ 
+        function valueSet(id){
+            const count = document.getElementById(id).value;
+            const number = parseFloat(count);
+            return number;
+        }
+
+        const button = document.getElementById("withdrawBtn");
+        button.addEventListener('click',function(){
+            const withdrawNum = valueSet("withdrawAmount");
+
+            updateSpan("withdrawBalance", withdrawNum);
+            updateSpan("depositBalance", -1 * withdrawNum);
+
+            document.getElementById("withdrawAmount").value = "";
+
+        })
+    </script>
+</body>
+</html>
